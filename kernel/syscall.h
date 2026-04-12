@@ -27,4 +27,4 @@
 #define SYS_sigcheck 26
 #define SYS_ulock_acquire 27
 #define SYS_ulock_release 28
-#define SYS_readCount 29
+#define SYS_readCount 29 // System call number for readCount .This syscall returns the total number of times read() has been called
