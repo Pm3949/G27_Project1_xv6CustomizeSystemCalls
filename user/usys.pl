@@ -49,4 +49,4 @@ entry("sigsend");
 entry("sigcheck");
 entry("ulock_acquire");
 entry("ulock_release");
-entry("readCount");
+entry("readCount"); # Entry for readCount system call.Generates user-level wrapper function for readCount()
