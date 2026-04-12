@@ -31,7 +31,8 @@ int sigsend(int);
 int sigcheck(void);
 int ulock_acquire(int);
 int ulock_release(int);
-int readCount(void);
+int readCount(void);// User-level function to get the number of read() system calls.Invokes the readCount system call and returns the count
+
 
 // ulib.c
 int stat(const char*, struct stat*);
