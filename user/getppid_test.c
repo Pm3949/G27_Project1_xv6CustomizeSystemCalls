@@ -2,6 +2,8 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 
+
+
 int
 main(void)
 {
@@ -11,6 +13,7 @@ main(void)
         printf("Fork failed\n");
         exit(1);
     }
+
 
     if(pid == 0){
         // In the child process
@@ -23,5 +26,7 @@ main(void)
         printf("Parent: My PID is %d\n", getpid());
     }
 
+
     exit(0); // Exit requires an integer status
+
 }

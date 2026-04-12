@@ -42,7 +42,7 @@ entry("getpid");
 entry("sbrk");
 entry("pause");
 entry("uptime");
-entry("getppid");
+entry("getppid"); #Systejm call 22 entry for user
 entry("send");
 entry("recv");
 entry("sigsend");

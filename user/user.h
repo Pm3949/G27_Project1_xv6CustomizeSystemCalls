@@ -20,11 +20,11 @@ int link(const char*, const char*);
 int mkdir(const char*);
 int chdir(const char*);
 int dup(int);
-int getpid(void);
+int getpid(void); 
 char* sys_sbrk(int,int);
 int pause(int);
 int uptime(void);
-int getppid(void); // User programs know this function exist and what it returns.
+int getppid(void); // User knows about this new system call now
 int send(int, void*);
 int recv(void*);
 int sigsend(int);

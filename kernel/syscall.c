@@ -101,7 +101,7 @@ extern uint64 sys_unlink(void);
 extern uint64 sys_link(void);
 extern uint64 sys_mkdir(void);
 extern uint64 sys_close(void);
-extern uint64 sys_getppid(void);
+extern uint64 sys_getppid(void); //External function declaration for system call 22
 extern uint64 sys_send(void);
 extern uint64 sys_recv(void);
 extern uint64 sys_sigsend(void);

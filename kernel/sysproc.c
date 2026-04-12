@@ -107,8 +107,7 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
-
-
+//Code snippet for implementation of getppid()
 uint64
 sys_getppid(void){
   struct proc *currproc = myproc();
@@ -119,6 +118,7 @@ sys_getppid(void){
 
   return currproc->parent->pid;
 }
+
 
 extern struct proc proc[NPROC];
 //Send Message

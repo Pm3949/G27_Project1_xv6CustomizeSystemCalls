@@ -145,7 +145,7 @@ UPROGS=\
 	$U/_logstress\
 	$U/_forphan\
 	$U/_dorphan\
-	$U/_getppid_test\
+	$U/_getppid_test\ #Process Mgmt System call getppid()
 	$U/_ipc_test\
 	$U/_signal_test\
 	$U/_lock_test\
