@@ -108,7 +108,7 @@ extern uint64 sys_sigsend(void);
 extern uint64 sys_sigcheck(void);
 extern uint64 sys_ulock_acquire(void);
 extern uint64 sys_ulock_release(void);
-extern uint64 sys_readCount(void);
+extern uint64 sys_readCount(void);// Declaration of readCount system call handler in kernel
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -141,32 +141,42 @@ static uint64 (*syscalls[])(void) = {
 [SYS_sigcheck] sys_sigcheck,
 [SYS_ulock_acquire] sys_ulock_acquire,
 [SYS_ulock_release] sys_ulock_release,
-[SYS_readCount] sys_readCount,
+[SYS_readCount] sys_readCount,//Mapping of system call number to its handler function
 };
 
+// Global counter to track number of read() system calls
 int read_count = 0;
+
 void
 syscall(void)
 {
   int num;
   struct proc *p = myproc();
 
+  // Fetch system call number from trapframe
   num = p->trapframe->a7;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
-    // Use num to lookup the system call function for num, call it,
-    // and store its return value in p->trapframe->a0
 
+  // Validate syscall number and check if handler exists
+  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+
+    // Increment read_count if the system call is read()
     if(num == SYS_read){
         read_count++;
     }
+
+    // Call the corresponding system call handler
+    // and store return value in a0 register
     p->trapframe->a0 = syscalls[num]();
   } else {
+    // Handle unknown system call
     printf("%d %s: unknown sys call %d\n",
             p->pid, p->name, num);
     p->trapframe->a0 = -1;
   }
 }
 
+// System call implementation for readCount
+// Returns the total number of times read() has been invoked
 uint64
 sys_readCount(void)
 {
