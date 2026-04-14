@@ -146,10 +146,10 @@ UPROGS=\
 	$U/_forphan\
 	$U/_dorphan\
 	$U/_getppid_test\ #Process Mgmt System call getppid()
-	$U/_ipc_test\
+	$U/_ipc_test\ #Inter-Process Communication System calls
 	$U/_signal_test\
 	$U/_lock_test\
-	$U/_readtest\# Adding readtest user program to build . This compiles readtest.c and makes it available in xv6 shell
+	$U/_readtest\# Adding readtest user program to build . This compiles readtest.c and makes it available in xv6 shell.
 	
 
 fs.img: mkfs/mkfs README $(UPROGS)

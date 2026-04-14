@@ -146,8 +146,8 @@ found:
   p->context.ra = (uint64)forkret;
   p->context.sp = p->kstack + PGSIZE;
 
-  initlock(&p->msg_lock, "mbox");
-  p->has_msg = 0;
+  initlock(&p->msg_lock, "mbox"); // Initialize the lock for the mailbox
+  p->has_msg = 0; // Initially no message is present in the mailbox
 
   p->signal_pending = 0;
 

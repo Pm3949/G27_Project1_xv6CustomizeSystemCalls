@@ -105,10 +105,12 @@ struct proc {
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
 
-  
-  char mailbox[64];            // The message buffer
-  int has_msg;                 // Flag: 1 if message exists, 0 if empty
-  struct spinlock msg_lock;    // Lock to protect the mailbox
+  // Per-process IPC mailbox: each process has a single mailbox
+  // protected by msg_lock. A sender copies a message into the target's
+  // mailbox via send(), and the receiver retrieves it via recv().
+  char mailbox[64];            // Single-message buffer (max 64 bytes)
+  int has_msg;                 // 1 = mailbox holds an unread message, 0 = empty
+  struct spinlock msg_lock;    // Spinlock guarding mailbox and has_msg
 
   int signal_pending; // 1 if a signal is waiting, 0 if not
 };

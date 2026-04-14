@@ -43,8 +43,8 @@ entry("sbrk");
 entry("pause");
 entry("uptime");
 entry("getppid"); #Systejm call 22 entry for user
-entry("send");
-entry("recv");
+entry("send"); # Inter-Process Communication System call send()
+entry("recv"); # Inter-Process Communication System call recv()
 entry("sigsend");
 entry("sigcheck");
 entry("ulock_acquire");

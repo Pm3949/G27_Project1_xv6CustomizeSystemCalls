@@ -25,8 +25,8 @@ char* sys_sbrk(int,int);
 int pause(int);
 int uptime(void);
 int getppid(void); // User knows about this new system call now
-int send(int, void*);
-int recv(void*);
+int send(int, void*); // Inter-Process Communication System call send()
+int recv(void*); // Inter-Process Communication System call recv()
 int sigsend(int);
 int sigcheck(void);
 int ulock_acquire(int);

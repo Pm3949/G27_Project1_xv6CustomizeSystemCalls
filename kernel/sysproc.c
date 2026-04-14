@@ -121,7 +121,8 @@ sys_getppid(void){
 
 
 extern struct proc proc[NPROC];
-//Send Message
+
+// Send Message
 uint64
 sys_send(void)
 {
@@ -150,12 +151,12 @@ sys_send(void)
       memmove(p->mailbox, buf, 64);
       p->has_msg = 1;
       
-      // --- CRITICAL CHANGE START ---
+      // CRITICAL CHANGE START 
       release(&p->msg_lock); // Release mailbox lock
       release(&p->lock);     // Release process lock BEFORE wakeup
       
       wakeup(&p->mailbox);   // Now it is safe to wake up the receiver
-      // --- CRITICAL CHANGE END ---
+      // CRITICAL CHANGE END
       
       return 0;
     }
